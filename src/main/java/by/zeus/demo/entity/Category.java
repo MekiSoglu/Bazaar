@@ -11,6 +11,40 @@ public class Category extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;
 
+    @Override
+    public Long getId() {
+        return Id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public Category getParent() {
+        return parent;
+    }
+
+    public void setParent(Category parent) {
+        this.parent = parent;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Set<Product> getProductSet() {
+        return productSet;
+    }
+
+    public void setProductSet(Set<Product> productSet) {
+        this.productSet = productSet;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id", updatable = false, insertable = false)
     Category parent;
