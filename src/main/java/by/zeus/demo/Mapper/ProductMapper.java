@@ -7,21 +7,14 @@ import by.zeus.demo.service.CategoryService;
 import by.zeus.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
-@Mapper()
 public class ProductMapper {
 
-    CategoryService categoryService;
 
-    ProductService productService;
 
-    public ProductMapper(CategoryService categoryService, ProductService productService) {
-        this.categoryService = categoryService;
-        this.productService = productService;
-    }
-
-    public  Product toProduct(ProductDto productDto){
-        Product product=productService.find(productDto.getId());
+    public static   Product toProduct(ProductDto productDto,Category category){
+        Product product=new Product();
         product.setId(productDto.getId());
         product.setName(productDto.getName());
         product.setDescription(productDto.getDescription());
@@ -30,12 +23,11 @@ public class ProductMapper {
         product.setLastUpdate(product.getLastUpdate());
         product.setDateCreate(product.getDateCreate());
         product.setUnitsInStock(product.getUnitsInStock());
-        Category category=categoryService.find(productDto.getId());
         product.setCategory(category);
         return product;
     }
 
-    public  ProductDto toProductDto(Product product){
+    public static   ProductDto toProductDto(Product product){
         ProductDto productDto=new ProductDto();
         productDto.setId(product.getId());
         productDto.setActive(product.isActive());

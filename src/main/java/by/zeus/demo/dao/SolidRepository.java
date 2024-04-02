@@ -9,5 +9,7 @@ import java.util.Optional;
 public interface SolidRepository <T extends BaseEntity,ID> extends JpaRepository<T,ID> {
     @Override
     <S extends T> Optional<S> findOne(Example<S> example);
-    Class<T> GetDomainClass();
+    default Class<T> GetDomainClass(){
+        return (Class<T>) BaseEntity.class;
+    }
 }

@@ -4,23 +4,37 @@ import by.zeus.demo.Mapper.CategoryMapper;
 import by.zeus.demo.dao.BaseRepository;
 import by.zeus.demo.dto.CategoryDto;
 import by.zeus.demo.entity.Category;
+import by.zeus.demo.entity.Product;
+import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
+@Service
 public class CategoryService extends BaseService<Category>{
 
-    private final CategoryMapper categoryMapper;
 
-    public CategoryService(BaseRepository<Category> repository, CategoryMapper categoryMapper) {
+    public CategoryService(BaseRepository<Category> repository) {
         super(repository);
-        this.categoryMapper = categoryMapper;
     }
 
     public Category create(CategoryDto categoryDto){
-        Category category=categoryMapper.toCategory(categoryDto);
+        Category pCategory=find(categoryDto.getCategoryParentId());
+        if(pCategory==null){
+
+        }
+        Category category=CategoryMapper.toCategory(categoryDto,pCategory);
         return create(category);
     }
 
+
+
     public Category find(Long Id){
-        return find(Id);
+        Optional<Category> category=getOne(Id);
+        if(!category.isEmpty()){
+            return category.get();
+        }else{
+            return null;
+        }
     }
 
     @Override

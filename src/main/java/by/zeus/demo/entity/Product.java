@@ -9,9 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "product")
 public class Product extends  BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+
 
     public Category getCategory() {
         return category;
@@ -56,13 +54,7 @@ public class Product extends  BaseEntity {
     @Column
     String description;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getSku() {
         return sku;

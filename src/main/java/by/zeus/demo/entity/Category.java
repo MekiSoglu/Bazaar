@@ -7,19 +7,17 @@ import java.util.Set;
 @Entity
 @Table(name="categories")
 public class Category extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long Id;
 
-    @Override
-    public Long getId() {
-        return Id;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id", updatable = false, insertable = false)
+    Category parent;
 
-    @Override
-    public void setId(Long id) {
-        Id = id;
-    }
+    @Column
+    String categoryName;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
+    Set<Product> productSet;
+
 
     public Category getParent() {
         return parent;
@@ -45,13 +43,5 @@ public class Category extends BaseEntity {
         this.productSet = productSet;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id", updatable = false, insertable = false)
-    Category parent;
 
-    @Column
-    String categoryName;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
-    Set<Product> productSet;
 }

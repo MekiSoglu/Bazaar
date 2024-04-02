@@ -47,6 +47,10 @@ public class BaseService <E extends BaseEntity>{
         return repository.findAll();
     }
 
+    public Optional<E> getOne(Long Id){
+        return repository.findById(Id);
+    }
+
     @Transactional
     @CacheEvict
     public void delete(Long id){

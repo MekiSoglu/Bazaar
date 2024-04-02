@@ -5,8 +5,10 @@ import by.zeus.demo.entity.Product;
 import by.zeus.demo.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/products")
 public class ProductController {
     private final ProductService productService;
 
@@ -14,9 +16,14 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
-    public void getProduct(Long Id){
-        productService.find(Id);
+    @GetMapping("/{Id}")
+    public ProductDto getProduct(@PathVariable Long Id){
+        return productService.find(Id);
+    }
+
+    @GetMapping("/all")
+    public List<Product> getAllProducts(){
+        return productService.findAll();
     }
 
     @PostMapping("/create")

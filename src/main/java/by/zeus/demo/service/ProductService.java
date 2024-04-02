@@ -2,30 +2,37 @@ package by.zeus.demo.service;
 
 import by.zeus.demo.Mapper.ProductMapper;
 import by.zeus.demo.dao.BaseRepository;
-import by.zeus.demo.dao.ProductRepository;
 import by.zeus.demo.dto.ProductDto;
+import by.zeus.demo.entity.Category;
 import by.zeus.demo.entity.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ProductService extends BaseService<Product>{
 
-    private final ProductMapper productMapper;
+    private final CategoryService categoryService;
 
-    public ProductService(BaseRepository<Product> repository, final ProductMapper productMapper) {
+    public ProductService(BaseRepository<Product> repository, CategoryService categoryService) {
         super(repository);
-        this.productMapper = productMapper;
+        this.categoryService = categoryService;
     }
 
 
     public Product create(ProductDto productDto){
-        Product product=productMapper.toProduct(productDto);
+        Category category= categoryService.find(productDto.getCategoryId());
+        Product product=ProductMapper.toProduct(productDto,category);
         return create(product);
     }
 
-    public Product find(Long Id){
-        return find(Id);
+    public ProductDto find(Long Id){
+        Optional<Product> product=getOne(Id);
+        if(!product.isEmpty()){
+          return ProductMapper.toProductDto(product.get());
+        }else{
+            return null;
+        }
     }
 
     public void delete(Long Id){

@@ -5,7 +5,7 @@ import by.zeus.demo.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/category")
 public class CategoryController {
     private final CategoryService categoryService;
 
