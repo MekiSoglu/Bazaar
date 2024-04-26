@@ -15,7 +15,7 @@ public class ProductDto {
 
     boolean active;
 
-    BigDecimal unitprice;
+    BigDecimal unitPrice;
 
 
     int unitStocks;
@@ -62,12 +62,12 @@ public class ProductDto {
         this.name = name;
     }
 
-    public BigDecimal getUnitprice() {
-        return unitprice;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUnitprice(BigDecimal unitprice) {
-        this.unitprice = unitprice;
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public boolean isActive() {

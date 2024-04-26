@@ -7,6 +7,8 @@ import by.zeus.demo.entity.Category;
 import by.zeus.demo.entity.Product;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,6 +26,15 @@ public class ProductService extends BaseService<Product>{
         Category category= categoryService.find(productDto.getCategoryId());
         Product product=ProductMapper.toProduct(productDto,category);
         return create(product);
+    }
+
+    public List<ProductDto> getAll(){
+        List<Product> products= findAll();
+        List<ProductDto> result= new ArrayList<>();
+        for(Product product:products){
+            result.add( ProductMapper.toProductDto(product));
+        }
+        return result;
     }
 
     public ProductDto find(Long Id){

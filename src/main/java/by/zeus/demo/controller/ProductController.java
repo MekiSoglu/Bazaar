@@ -22,8 +22,9 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public List<Product> getAllProducts(){
-        return productService.findAll();
+    @CrossOrigin ( "http://localhost:4200" )
+    public List<ProductDto> getAllProducts(){
+        return productService.getAll();
     }
 
     @PostMapping("/create")
