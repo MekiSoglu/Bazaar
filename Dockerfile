@@ -5,6 +5,6 @@ WORKDIR /app
 
 ADD target/devops-integration.jar devops-integration.jar
 
-EXPOSE 8080
+EXPOSE 4444
 
 CMD ["java", "-jar", "devops-integration.jar"]
