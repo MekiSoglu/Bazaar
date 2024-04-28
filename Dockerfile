@@ -3,7 +3,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 
-ADD target/demo-0.0.1-SNAPSHOT.jar devops-integration.jar.jar
+ADD target/devops-integration.jar devops-integration.jar
 
 EXPOSE 8080
 
