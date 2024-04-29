@@ -23,6 +23,8 @@ public class Category extends BaseEntity {
         return parent;
     }
     //test automatic pipelaline jenkins
+    //test automatic pipelaline jenkins2
+
 
     public void setParent(Category parent) {
         this.parent = parent;
