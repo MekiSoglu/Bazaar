@@ -12,6 +12,6 @@ ENV SPRING_DATA_REST_BASE_PATH="/api"
 
 ADD target/devops-integration.jar devops-integration.jar
 
-EXPOSE 4444
+EXPOSE 8080
 
 CMD ["java", "-jar", "devops-integration.jar"]
