@@ -3,7 +3,7 @@ FROM openjdk:17-jdk
 WORKDIR /app
 
 ENV SPRING_DATASOURCE_DRIVER_CLASS_NAME="com.mysql.cj.jdbc.Driver"
-ENV SPRING_DATASOURCE_URL="jdbc:mysql://localhost:3306/Ecommerce?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+ENV SPRING_DATASOURCE_URL="jdbc:mysql://host.docker.internal:3306/Ecommerce?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC"
 ENV SPRING_DATASOURCE_USERNAME="ecommerceapp"
 ENV SPRING_DATASOURCE_PASSWORD="ecommerceapp"
 ENV SPRING_JPA_HIBERNATE_DDL_AUTO="update"
