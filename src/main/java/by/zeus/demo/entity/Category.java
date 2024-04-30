@@ -25,6 +25,7 @@ public class Category extends BaseEntity {
     //test automatic pipelaline jenkins
     //test automatic pipelaline jenkins
     //test automatic pipelaline jenkins3
+    //test ui
 
 
 
