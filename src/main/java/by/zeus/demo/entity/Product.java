@@ -73,6 +73,7 @@ public class Product extends  BaseEntity {
     }
 
     //jenkins test
+    //jenkins test 2
 
     public BigDecimal getUnitPrice() {
         return unitPrice;
