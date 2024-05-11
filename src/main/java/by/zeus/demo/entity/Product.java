@@ -72,9 +72,7 @@ public class Product extends  BaseEntity {
         this.name = name;
     }
 
-    //jenkins test
-    //jenkins test 2
-    //jenkins test 2
+    //add jenkis test final
 
 
     public BigDecimal getUnitPrice() {
