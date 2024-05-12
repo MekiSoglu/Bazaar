@@ -3,6 +3,7 @@ package by.zeus.demo.controller;
 import by.zeus.demo.dto.ProductDto;
 import by.zeus.demo.entity.Product;
 import by.zeus.demo.service.ProductService;
+import org.hibernate.annotations.SoftDelete;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,4 +46,6 @@ public class ProductController {
     public void delete(@PathVariable Long Id){
         productService.delete(Id);
     }
+
+
 }

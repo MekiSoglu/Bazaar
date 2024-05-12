@@ -13,7 +13,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("")
+    @GetMapping("/{id}")
     public void getCategory(@RequestParam Long Id){
         categoryService.find(Id);
     }
