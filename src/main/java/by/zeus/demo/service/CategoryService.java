@@ -23,8 +23,6 @@ public class CategoryService extends BaseService<Category>{
         if(categoryDto.getParent_id()!=null){
             Category pCategory=findOne(categoryDto.getParent_id()).get();
              category=CategoryMapper.toCategory(categoryDto,pCategory);
-
-
         }
         return create(category);
     }

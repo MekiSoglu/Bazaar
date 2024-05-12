@@ -6,6 +6,9 @@ import by.zeus.demo.entity.Category;
 import by.zeus.demo.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -18,6 +21,15 @@ public class CategoryController {
     @GetMapping("/{id}")
     public CategoryDto getCategory(@PathVariable Long id){
        return CategoryMapper.toDto(categoryService.findOne(id).get());
+    }
+
+    @GetMapping("")
+    public List<CategoryDto> getAllCategories(){
+        List<CategoryDto> result = new ArrayList<CategoryDto>();
+        for(Category category : categoryService.findAll()){
+            result.add(CategoryMapper.toDto(category));
+        }
+        return result;
     }
 
     @PostMapping("")
