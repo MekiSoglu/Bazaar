@@ -5,7 +5,7 @@ import by.zeus.demo.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/category")
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -13,24 +13,24 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/category")
+    @GetMapping("")
     public void getCategory(@RequestParam Long Id){
         categoryService.find(Id);
     }
 
-    @PostMapping("/category")
+    @PostMapping("")
     public void createCategory(@RequestBody CategoryDto categoryDto){
         categoryService.create(categoryDto);
     }
 
-    @PostMapping("/category")
+    @PutMapping ("")
     public void updateCategory(@RequestBody CategoryDto categoryDto){
         categoryService.Update(categoryDto);
     }
 
 
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable Long id){
         categoryService.delete(id);
     }
