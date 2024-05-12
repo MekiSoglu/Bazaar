@@ -36,7 +36,7 @@ public class ProductMapper {
         productDto.setDataCreate(product.getDateCreate());
         productDto.setUnitStocks(product.getUnitsInStock());
         productDto.setUnitPrice(product.getUnitPrice());
-        productDto.setCategoryId(product.getCategory().getId());
+        productDto.setCategory_id(product.getCategory().getId());
         return productDto;
     }
 

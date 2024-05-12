@@ -1,6 +1,8 @@
 package by.zeus.demo.controller;
 
+import by.zeus.demo.Mapper.CategoryMapper;
 import by.zeus.demo.dto.CategoryDto;
+import by.zeus.demo.entity.Category;
 import by.zeus.demo.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +16,11 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public void getCategory(@PathVariable Long id){
-        categoryService.find(id);
+    public CategoryDto getCategory(@PathVariable Long id){
+       return CategoryMapper.toDto(categoryService.findOne(id).get());
     }
 
-    @PostMapping("/create")
+    @PostMapping("")
     public void createCategory(@RequestBody CategoryDto categoryDto){
         categoryService.create(categoryDto);
     }
@@ -33,5 +35,10 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable Long id){
         categoryService.delete(id);
+    }
+
+    @DeleteMapping("")
+    public void deleteCategory(){
+        categoryService.deleteAll();
     }
 }

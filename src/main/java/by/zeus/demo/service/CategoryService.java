@@ -18,28 +18,28 @@ public class CategoryService extends BaseService<Category>{
     }
 
     public Category create(CategoryDto categoryDto){
-        Category pCategory=find(categoryDto.getCategoryParentId());
-        if(pCategory==null){
+        Category category=CategoryMapper.toCategory(categoryDto,null);
+
+        if(categoryDto.getParent_id()!=null){
+            Category pCategory=findOne(categoryDto.getParent_id()).get();
+             category=CategoryMapper.toCategory(categoryDto,pCategory);
+
+
         }
-        Category category=CategoryMapper.toCategory(categoryDto,pCategory);
         return create(category);
     }
 
 
 
-    public Category find(Long Id){
-        Optional<Category> category=getOne(Id);
-        return category.orElse(null);
-    }
+
 
     public Category Update(CategoryDto dto) {
-        Category pCategory=find(dto.getCategoryParentId());
+        Category pCategory=findOne(dto.getParent_id()).get();
         Category model=CategoryMapper.toCategory(dto,pCategory);
         return super.Update(model);
     }
 
-    @Override
-    public void delete(Long id) {
-        super.delete(id);
-    }
+
+
+
 }

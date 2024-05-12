@@ -58,6 +58,13 @@ public class BaseService <E extends BaseEntity>{
         repository.deleteById(id);
     }
 
+    @Transactional
+    @CacheEvict
+    public void deleteAll(){
+        logger.debug("Request to delete",getEntityClassName());
+        repository.deleteAll();
+    }
+
     public  BaseRepository<E> getRepository(){
         return repository;
     }

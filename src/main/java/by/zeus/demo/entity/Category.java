@@ -9,7 +9,7 @@ import java.util.Set;
 public class Category extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id", updatable = false, insertable = false)
+    @JoinColumn(name = "parent_id")
     Category parent;
 
     @Column
@@ -22,12 +22,6 @@ public class Category extends BaseEntity {
     public Category getParent() {
         return parent;
     }
-    //test automatic pipelaline jenkins
-    //test automatic pipelaline jenkins
-    //test automatic pipelaline jenkins3
-    //test ui
-
-
 
 
     public void setParent(Category parent) {

@@ -5,9 +5,9 @@ import java.util.Date;
 
 public class ProductDto {
 
-    Long Id;
+    Long id;
 
-    Long CategoryId;
+    Long category_id;
 
     String sku;
 
@@ -29,21 +29,20 @@ public class ProductDto {
     String description;
 
 
-
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
-    public Long getCategoryId() {
-        return CategoryId;
+    public Long getCategory_id() {
+        return category_id;
     }
 
-    public void setCategoryId(Long categoryId) {
-        CategoryId = categoryId;
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
     }
 
     public String getSku() {

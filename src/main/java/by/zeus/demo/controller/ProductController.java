@@ -1,5 +1,6 @@
 package by.zeus.demo.controller;
 
+import by.zeus.demo.Mapper.ProductMapper;
 import by.zeus.demo.dto.ProductDto;
 import by.zeus.demo.entity.Product;
 import by.zeus.demo.service.ProductService;
@@ -20,7 +21,7 @@ public class ProductController {
     @GetMapping("/{Id}")
     @CrossOrigin ( "http://localhost:4200" )
     public ProductDto getProduct(@PathVariable Long Id){
-        return productService.find(Id);
+        return ProductMapper.toProductDto(productService.findOne(Id).get());
     }
 
     @GetMapping("")
@@ -45,6 +46,11 @@ public class ProductController {
     @CrossOrigin ( "http://localhost:4200" )
     public void delete(@PathVariable Long Id){
         productService.delete(Id);
+    }
+
+    @DeleteMapping()
+    public void deleteAll(){
+        productService.deleteAll();
     }
 
 

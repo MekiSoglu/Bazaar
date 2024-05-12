@@ -4,13 +4,24 @@ import by.zeus.demo.entity.Product;
 
 import java.util.Set;
 
+
 public class CategoryDto {
 
-    Long Id;
+    Long id;
 
-    Long CategoryParentId;
+    Long parent_id;
 
     String categoryName;
+
+    Set<Long> product_Id;
+
+    public Set<Long> getProduct_Id() {
+        return product_Id;
+    }
+
+    public void setProduct_Id(Set<Long> product_Id) {
+        this.product_Id = product_Id;
+    }
 
     int version;
 
@@ -22,22 +33,21 @@ public class CategoryDto {
         this.version = version;
     }
 
+
     public Long getId() {
-        return Id;
+        return id;
     }
-
-
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
-    public Long getCategoryParentId() {
-        return CategoryParentId;
+    public Long getParent_id() {
+        return parent_id;
     }
 
-    public void setCategoryParentId(Long categoryParentId) {
-        CategoryParentId = categoryParentId;
+    public void setParent_id(Long parent_id) {
+        this.parent_id = parent_id;
     }
 
     public String getCategoryName() {
@@ -48,13 +58,7 @@ public class CategoryDto {
         this.categoryName = categoryName;
     }
 
-    public Set<Product> getProductSet() {
-        return productSet;
-    }
 
-    public void setProductSet(Set<Product> productSet) {
-        this.productSet = productSet;
-    }
 
-    Set<Product> productSet;
+  //  Set<Product> productSet;
 }

@@ -24,7 +24,7 @@ public class ProductService extends BaseService<Product>{
 
 
     public Product create(ProductDto productDto){
-        Category category= categoryService.find(productDto.getCategoryId());
+        Category category= categoryService.findOne(productDto.getCategory_id()).get();
         Product product=ProductMapper.toProduct(productDto,category);
         return create(product);
     }
@@ -38,21 +38,8 @@ public class ProductService extends BaseService<Product>{
         return result;
     }
 
-    public ProductDto find(Long Id){
-        Optional<Product> product=getOne(Id);
-        if(!product.isEmpty()){
-          return ProductMapper.toProductDto(product.get());
-        }else{
-            return null;
-        }
-    }
-
-    public void delete(Long Id){
-        delete(Id);
-    }
-
     public Product update(ProductDto product){
-        Category category=categoryService.find(product.getId());
+        Category category=categoryService.findOne(product.getCategory_id()).get();
         Product model=ProductMapper.toProduct(product,category);
        return Update(model);
     }
