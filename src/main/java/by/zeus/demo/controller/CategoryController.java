@@ -14,8 +14,8 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public void getCategory(@RequestParam Long Id){
-        categoryService.find(Id);
+    public void getCategory(@PathVariable Long id){
+        categoryService.find(id);
     }
 
     @PostMapping("")
