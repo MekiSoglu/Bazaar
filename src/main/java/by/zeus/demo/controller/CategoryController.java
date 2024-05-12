@@ -18,7 +18,7 @@ public class CategoryController {
         categoryService.find(id);
     }
 
-    @PostMapping("")
+    @PostMapping("/create")
     public void createCategory(@RequestBody CategoryDto categoryDto){
         categoryService.create(categoryDto);
     }
