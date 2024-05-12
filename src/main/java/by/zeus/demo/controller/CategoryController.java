@@ -24,7 +24,6 @@ public class CategoryController {
     }
 
     @GetMapping("")
-    @CrossOrigin ( "http://localhost:4200" )
     public List<CategoryDto> getAllCategories(){
         List<CategoryDto> result = new ArrayList<CategoryDto>();
         for(Category category : categoryService.findAll()){
