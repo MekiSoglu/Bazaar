@@ -20,7 +20,6 @@ public class CategoryService extends BaseService<Category>{
     public Category create(CategoryDto categoryDto){
         Category pCategory=find(categoryDto.getCategoryParentId());
         if(pCategory==null){
-
         }
         Category category=CategoryMapper.toCategory(categoryDto,pCategory);
         return create(category);
@@ -30,15 +29,12 @@ public class CategoryService extends BaseService<Category>{
 
     public Category find(Long Id){
         Optional<Category> category=getOne(Id);
-        if(!category.isEmpty()){
-            return category.get();
-        }else{
-            return null;
-        }
+        return category.orElse(null);
     }
 
-    @Override
-    public Category Update(Category model) {
+    public Category Update(CategoryDto dto) {
+        Category pCategory=find(dto.getCategoryParentId());
+        Category model=CategoryMapper.toCategory(dto,pCategory);
         return super.Update(model);
     }
 

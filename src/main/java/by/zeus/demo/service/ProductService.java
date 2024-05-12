@@ -16,6 +16,7 @@ public class ProductService extends BaseService<Product>{
 
     private final CategoryService categoryService;
 
+
     public ProductService(BaseRepository<Product> repository, CategoryService categoryService) {
         super(repository);
         this.categoryService = categoryService;
@@ -50,8 +51,10 @@ public class ProductService extends BaseService<Product>{
         delete(Id);
     }
 
-    public Product update(Product product){
-       return update(product);
+    public Product update(ProductDto product){
+        Category category=categoryService.find(product.getId());
+        Product model=ProductMapper.toProduct(product,category);
+       return Update(model);
     }
 
 }
