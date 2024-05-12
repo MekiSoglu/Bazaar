@@ -17,6 +17,7 @@ public class ProductController {
     }
 
     @GetMapping("/{Id}")
+    @CrossOrigin ( "http://localhost:4200" )
     public ProductDto getProduct(@PathVariable Long Id){
         return productService.find(Id);
     }
@@ -28,16 +29,19 @@ public class ProductController {
     }
 
     @PutMapping("")
+    @CrossOrigin ( "http://localhost:4200" )
     public void updateProduct(@RequestBody ProductDto productDto){
         productService.update(productDto);
     }
 
     @PostMapping("")
+    @CrossOrigin ( "http://localhost:4200" )
     public void create(@RequestBody ProductDto product){
         productService.create(product);
     }
 
     @DeleteMapping("/{Id}")
+    @CrossOrigin ( "http://localhost:4200" )
     public void delete(@PathVariable Long Id){
         productService.delete(Id);
     }
