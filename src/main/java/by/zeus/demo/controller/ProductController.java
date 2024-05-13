@@ -5,6 +5,7 @@ import by.zeus.demo.dto.ProductDto;
 import by.zeus.demo.entity.Product;
 import by.zeus.demo.service.ProductService;
 import org.hibernate.annotations.SoftDelete;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,11 @@ public class ProductController {
     @GetMapping("")
     public List<ProductDto> getAllProducts(){
         return productService.getAll();
+    }
+
+    @GetMapping("category/{Id}")
+    public Page<ProductDto> findByCategoryId(@PathVariable Long Id){
+        return productService.findByCategoryId(Id);
     }
 
     @PutMapping("")
