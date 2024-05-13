@@ -60,4 +60,17 @@ public class ProductService extends BaseService<Product>{
 
         return  new PageImpl<>(productDtos);
     }
+
+    public Page<ProductDto> findByName(String name) {
+        List<Product> products=productRepository.findByNameContaining(name);
+        List<ProductDto> productDtos=new ArrayList<>();
+        for (Product product:products){
+            productDtos.add(ProductMapper.toProductDto(product));
+        }
+
+        return  new PageImpl<>(productDtos);
+    }
+
+
+
 }

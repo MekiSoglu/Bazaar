@@ -36,6 +36,11 @@ public class ProductController {
         return productService.findByCategoryId(Id);
     }
 
+    @GetMapping("search/{name}")
+    public Page<ProductDto> findByName(@PathVariable String name){
+        return productService.findByName(name);
+    }
+
     @PutMapping("")
     public void updateProduct(@RequestBody ProductDto productDto){
         productService.update(productDto);
