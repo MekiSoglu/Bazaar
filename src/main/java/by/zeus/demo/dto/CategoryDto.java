@@ -2,6 +2,7 @@ package by.zeus.demo.dto;
 
 import by.zeus.demo.entity.Product;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -14,6 +15,15 @@ public class CategoryDto {
     String categoryName;
 
     Set<Long> product_Id;
+    List<Long> categoryDetailsId;
+
+    public List<Long> getCategoryDetailsId() {
+        return categoryDetailsId;
+    }
+
+    public void setCategoryDetailsId(List<Long> categoryDetailsId) {
+        this.categoryDetailsId = categoryDetailsId;
+    }
 
     public Set<Long> getProduct_Id() {
         return product_Id;

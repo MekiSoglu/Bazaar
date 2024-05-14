@@ -2,6 +2,8 @@ package by.zeus.demo.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,6 +20,19 @@ public class Category extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
     Set<Product> productSet;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "category_category_details",
+            joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_details_id"))
+    private List<CategoryDetails> categoryDetailsList = new ArrayList<>();
+
+    public List<CategoryDetails> getCategoryDetailsList() {
+        return categoryDetailsList;
+    }
+
+    public void setCategoryDetailsList(List<CategoryDetails> categoryDetailsList) {
+        this.categoryDetailsList = categoryDetailsList;
+    }
 
     public Category getParent() {
         return parent;

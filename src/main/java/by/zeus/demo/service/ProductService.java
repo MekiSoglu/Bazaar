@@ -5,15 +5,17 @@ import by.zeus.demo.dao.BaseRepository;
 import by.zeus.demo.dao.ProductRepository;
 import by.zeus.demo.dto.ProductDto;
 import by.zeus.demo.entity.Category;
+import by.zeus.demo.entity.CategoryDetails;
 import by.zeus.demo.entity.Product;
+import by.zeus.demo.entity.ProductDetails;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductService extends BaseService<Product>{
@@ -21,11 +23,14 @@ public class ProductService extends BaseService<Product>{
     private final CategoryService categoryService;
     private final ProductRepository productRepository;
 
+    private final ProductDetailsService productDetailsService;
 
-    public ProductService(BaseRepository<Product> repository, CategoryService categoryService, ProductRepository productRepository) {
+
+    public ProductService(BaseRepository<Product> repository, CategoryService categoryService, ProductRepository productRepository, ProductDetailsService productDetailsService) {
         super(repository);
         this.categoryService = categoryService;
         this.productRepository = productRepository;
+        this.productDetailsService = productDetailsService;
     }
 
 
@@ -69,6 +74,21 @@ public class ProductService extends BaseService<Product>{
         }
 
         return  new PageImpl<>(productDtos);
+    }
+
+    public Map<String,String> showDetails(Long Id){
+        Product product=findOne(Id).get();
+        Category category= categoryService.findByCategoryProductId(product);
+        List<CategoryDetails> categoryDetails=category.getCategoryDetailsList();
+        List<ProductDetails> productDetails=productDetailsService.getProductDetails(product.getId());
+        Map<String,String> detailsMap = new HashMap<String,String>();
+        int i=0;
+        if(categoryDetails!=null&&productDetails!=null){
+            for(ProductDetails d: productDetails){
+                detailsMap.put(categoryDetails.get(i++).getName(),d.getValue());
+            }
+        }
+        return detailsMap;
     }
 
 

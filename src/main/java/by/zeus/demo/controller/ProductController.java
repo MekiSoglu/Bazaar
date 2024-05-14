@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
@@ -29,6 +30,11 @@ public class ProductController {
     @GetMapping("")
     public List<ProductDto> getAllProducts(){
         return productService.getAll();
+    }
+
+    @GetMapping("/show/{Id}")
+    public Map<String, String> ShowDetails(@PathVariable Long Id){
+        return productService.showDetails(Id);
     }
 
     @GetMapping("category/{Id}")
