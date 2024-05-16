@@ -25,13 +25,17 @@ public class CategoryService extends BaseService<Category>{
         this.categoryRepository = categoryRepository;
     }
 
+    public Category toCategory(CategoryDto categoryDto,Category pcategory,List<CategoryDetails> categoryDetails) {
+        return CategoryMapper.toCategory(categoryDto,pcategory,categoryDetails);
+    }
+
     public Category create(CategoryDto categoryDto){
         Category category=CategoryMapper.toCategory(categoryDto,null,null);
         List<CategoryDetails>  categoryDetails=categoryDetailsService.findAll(categoryDto.getCategoryDetailsId());
 
         if(categoryDto.getParent_id()!=null){
             Category pCategory=findOne(categoryDto.getParent_id()).get();
-            category=CategoryMapper.toCategory(categoryDto,pCategory,categoryDetails);
+            category=toCategory(categoryDto,pCategory,categoryDetails);
         }
         return create(category);
     }
@@ -39,7 +43,7 @@ public class CategoryService extends BaseService<Category>{
     public Category Update(CategoryDto dto) {
         Category pCategory=findOne(dto.getParent_id()).get();
         List<CategoryDetails>  categoryDetails=categoryDetailsService.findAll(dto.getCategoryDetailsId());
-        Category model=CategoryMapper.toCategory(dto,pCategory,categoryDetails);
+        Category model=toCategory(dto,pCategory,categoryDetails);
         return super.Update(model);
     }
 
