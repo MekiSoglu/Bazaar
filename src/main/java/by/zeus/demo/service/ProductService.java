@@ -55,6 +55,7 @@ public class ProductService extends BaseService<Product>{
         List<Product> products= findAll();
         return pageable(listDto(products),page,size);
     }
+    //a
 
     public Product update(ProductDto product){
         Category category=categoryService.findOne(product.getCategory_id()).get();
