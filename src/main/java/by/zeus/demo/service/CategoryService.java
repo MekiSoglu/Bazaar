@@ -1,8 +1,10 @@
 package by.zeus.demo.service;
 
+import by.zeus.demo.Mapper.CategoryDetailsMapper;
 import by.zeus.demo.Mapper.CategoryMapper;
 import by.zeus.demo.dao.BaseRepository;
 import by.zeus.demo.dao.CategoryRepository;
+import by.zeus.demo.dto.CategoryDetailsDto;
 import by.zeus.demo.dto.CategoryDto;
 import by.zeus.demo.entity.Category;
 import by.zeus.demo.entity.CategoryDetails;
@@ -52,6 +54,15 @@ public class CategoryService extends BaseService<Category>{
         products.add(product);
         Category category=categoryRepository.findCategoryByProductSet(products);
         return category;
+    }
+
+    public List<CategoryDetailsDto> getCategoryDetails(Long categoryId) {
+        List<CategoryDetails> categoryDetailsList = categoryRepository.findCategoryDetailsByCategoryId(categoryId);
+        List<CategoryDetailsDto> categoryDetailsDtos=new ArrayList<>();
+        for(CategoryDetails categoryDetails:categoryDetailsList){
+            categoryDetailsDtos.add(CategoryDetailsMapper.toDto(categoryDetails));
+        }
+       return categoryDetailsDtos;
     }
     public List<Category> findAll(List<Long> Ids){
         return categoryRepository.findCategoriesBy(Ids);

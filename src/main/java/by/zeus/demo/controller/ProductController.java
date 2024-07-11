@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin ( "http://localhost:4200" )
+@CrossOrigin ( {"http://localhost:4401", "http://localhost:4200"} )
 
 public class ProductController {
     private final ProductService productService;
@@ -33,6 +33,11 @@ public class ProductController {
         int page=pageable.getPageNumber();
         int size=pageable.getPageSize();
         return productService.getAll(page,size);
+    }
+
+    @GetMapping("/getProducts")
+    public List<ProductDto> getAllProducts(){
+        return productService.getAll();
     }
 
     @GetMapping("/show/{Id}")
