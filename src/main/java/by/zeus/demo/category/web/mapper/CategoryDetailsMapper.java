@@ -1,8 +1,10 @@
-package by.zeus.demo.category.web.mapper;
+package by.zeus.demo.Mapper;
 
-import by.zeus.demo.category.web.dto.CategoryDetailsDto;
-import by.zeus.demo.category.domain.CategoryDetails;
-import by.zeus.demo.category.service.CategoryService;
+import by.zeus.demo.dto.CategoryDetailsDto;
+import by.zeus.demo.entity.Category;
+import by.zeus.demo.entity.CategoryDetails;
+import by.zeus.demo.service.CategoryService;
+import org.mapstruct.Mapper;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
@@ -26,11 +28,11 @@ public class CategoryDetailsMapper {
 
     public static CategoryDetailsDto toDto(CategoryDetails categoryDetails){
         CategoryDetailsDto categoryDetailsDto=new CategoryDetailsDto();
-        categoryDetailsDto.setId(categoryDetailsDto.getId());
-        categoryDetailsDto.setName(categoryDetailsDto.getName());
+        categoryDetailsDto.setId(categoryDetails.getId());
+        categoryDetailsDto.setName(categoryDetails.getName());
         Ids=new ArrayList<>();
-        for(Long id: categoryDetailsDto.getCategoryList()){
-            Ids.add(id);
+        for(Category category: categoryDetails.getCategoryList()){
+            Ids.add(category.getId());
         }
         categoryDetailsDto.setCategoryList(Ids);
         return categoryDetailsDto;

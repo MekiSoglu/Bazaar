@@ -57,6 +57,15 @@ public class ProductService extends BaseService<Product> {
         List<Product> products= findAll();
         return pageable(listDto(products),page,size);
     }
+
+    public List<ProductDto> getAll(){
+        List<Product> products= findAll();
+        List<ProductDto> productDtos= new ArrayList<>();
+        for(Product product:products){
+            productDtos.add(ProductMapper.toProductDto(product));
+        }
+        return productDtos;
+    }
     //a
 
     public Product update(ProductDto product){

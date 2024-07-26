@@ -1,22 +1,25 @@
-package by.zeus.demo.category.service;
+package by.zeus.demo.service;
 
-import by.zeus.demo.category.web.mapper.CategoryMapper;
-import by.zeus.demo.base.repository.BaseRepository;
-import by.zeus.demo.category.repository.CategoryRepository;
-import by.zeus.demo.category.web.dto.CategoryDto;
-import by.zeus.demo.category.domain.Category;
-import by.zeus.demo.category.domain.CategoryDetails;
-import by.zeus.demo.product.domain.Product;
-import by.zeus.demo.base.service.BaseService;
+import by.zeus.demo.Mapper.CategoryDetailsMapper;
+import by.zeus.demo.Mapper.CategoryMapper;
+import by.zeus.demo.dao.BaseRepository;
+import by.zeus.demo.dao.CategoryRepository;
+import by.zeus.demo.dto.CategoryDetailsDto;
+import by.zeus.demo.dto.CategoryDto;
+import by.zeus.demo.entity.Category;
+import by.zeus.demo.entity.CategoryDetails;
+import by.zeus.demo.entity.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CategoryService extends BaseService<Category> {
+public class CategoryService extends BaseService<Category>{
+
     private  final CategoryDetailsService categoryDetailsService;
-    private final  CategoryRepository     categoryRepository;
+    private final CategoryRepository categoryRepository;
+
 
     public CategoryService(BaseRepository<Category> repository, CategoryDetailsService categoryDetailsService, CategoryRepository categoryRepository) {
         super(repository);
@@ -52,9 +55,20 @@ public class CategoryService extends BaseService<Category> {
         Category category=categoryRepository.findCategoryByProductSet(products);
         return category;
     }
+
+    public List<CategoryDetailsDto> getCategoryDetails(Long categoryId) {
+        List<CategoryDetails> categoryDetailsList = categoryRepository.findCategoryDetailsByCategoryId(categoryId);
+        List<CategoryDetailsDto> categoryDetailsDtos=new ArrayList<>();
+        for(CategoryDetails categoryDetails:categoryDetailsList){
+            categoryDetailsDtos.add(CategoryDetailsMapper.toDto(categoryDetails));
+        }
+       return categoryDetailsDtos;
+    }
     public List<Category> findAll(List<Long> Ids){
         return categoryRepository.findCategoriesBy(Ids);
     }
+
+
 
 
 }
