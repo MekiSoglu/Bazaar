@@ -11,7 +11,7 @@ public class MediaMapper {
     public static MediaEntity toEntity(MediaDTO mediaDTO){
         MediaEntity media=new MediaEntity();
         media.setDescription(mediaDTO.getDescription());
-        media.setAdminEntity();
+        //media.setAdminEntity();
         media.setSize(mediaDTO.getSize());
         media.setUrl(mediaDTO.getUrl());
         media.setFileName(mediaDTO.getFileName());
