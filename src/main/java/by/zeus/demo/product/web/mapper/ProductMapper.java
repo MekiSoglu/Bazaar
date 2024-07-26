@@ -5,8 +5,6 @@ import by.zeus.demo.category.domain.Category;
 import by.zeus.demo.product.domain.Product;
 public class ProductMapper {
 
-
-
     public static Product toProduct(ProductDto productDto,Category category){
         Product product=new Product();
         product.setId(productDto.getId());

@@ -19,14 +19,9 @@ public class CategoryDetailsService extends BaseService<CategoryDetails> {
         this.categoryRepository = categoryRepository;
     }
 
-
-
-
-
     public List<CategoryDetails> findAll(List<Long> Ids){
         return categoryRepository.findCategoryDetailsBy(Ids);
     }
-
 
     public void create(CategoryDetailsDto categoryDetailsDto){
         CategoryDetails categoryDetails= CategoryDetailsMapper.toCategoryDetails(categoryDetailsDto);
@@ -37,6 +32,5 @@ public class CategoryDetailsService extends BaseService<CategoryDetails> {
         CategoryDetails categoryDetails= CategoryDetailsMapper.toCategoryDetails(categoryDetailsDto);
         Update(categoryDetails);
     }
-
 
 }

@@ -6,6 +6,7 @@ public class CategoryDetailsDto {
     Long id;
 
     String name;
+
     List<Long> categoryList;
 
     public Long getId() {

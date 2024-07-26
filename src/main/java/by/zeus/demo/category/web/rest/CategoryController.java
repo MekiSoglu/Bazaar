@@ -43,8 +43,6 @@ public class CategoryController {
         categoryService.Update(categoryDto);
     }
 
-
-
     @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable Long id){
         categoryService.delete(id);

@@ -17,8 +17,6 @@ public class CategoryMapper {
     private static Set<Long> product_Id;
     private static List<Long> categoryDetaislId;
 
-
-
     public static Category toCategory(CategoryDto categoryDto, Category parentCategorys, List<CategoryDetails> categoryDetails){
         Category category=new Category();
         category.setId(categoryDto.getId());
@@ -29,7 +27,6 @@ public class CategoryMapper {
         category.setCategoryDetailsList(categoryDetails);
         return category;
     }
-
 
     public static CategoryDto toDto(Category category){
         product_Id=new HashSet<>();
@@ -55,6 +52,5 @@ public class CategoryMapper {
 
         return categoryDto;
     }
-
 
 }

@@ -11,7 +11,6 @@ import java.util.List;
 public interface CategoryDetailsRepository extends BaseRepository<CategoryDetails> {
 
     @Query("SELECT c FROM CategoryDetails c WHERE c.id IN (:Ids)")
-
     List<CategoryDetails> findCategoryDetailsBy(List<Long> Ids);
 
 }

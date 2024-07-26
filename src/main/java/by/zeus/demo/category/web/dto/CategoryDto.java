@@ -2,8 +2,6 @@ package by.zeus.demo.category.web.dto;
 
 import java.util.List;
 import java.util.Set;
-
-
 public class CategoryDto {
 
     Long id;
@@ -66,7 +64,4 @@ public class CategoryDto {
         this.categoryName = categoryName;
     }
 
-
-
-  //  Set<Product> productSet;
 }

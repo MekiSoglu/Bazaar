@@ -15,10 +15,8 @@ import java.util.List;
 
 @Service
 public class CategoryService extends BaseService<Category> {
-
     private  final CategoryDetailsService categoryDetailsService;
     private final  CategoryRepository     categoryRepository;
-
 
     public CategoryService(BaseRepository<Category> repository, CategoryDetailsService categoryDetailsService, CategoryRepository categoryRepository) {
         super(repository);
@@ -57,8 +55,6 @@ public class CategoryService extends BaseService<Category> {
     public List<Category> findAll(List<Long> Ids){
         return categoryRepository.findCategoriesBy(Ids);
     }
-
-
 
 
 }
