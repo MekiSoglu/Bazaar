@@ -1,34 +1,36 @@
-package by.zeus.demo.service;
+package by.zeus.demo.category.service;
 
-import by.zeus.demo.Mapper.CategoryDetailsMapper;
-import by.zeus.demo.Mapper.CategoryMapper;
-import by.zeus.demo.dao.BaseRepository;
-import by.zeus.demo.dao.CategoryRepository;
-import by.zeus.demo.dto.CategoryDetailsDto;
-import by.zeus.demo.dto.CategoryDto;
-import by.zeus.demo.entity.Category;
-import by.zeus.demo.entity.CategoryDetails;
-import by.zeus.demo.entity.Product;
+import by.zeus.demo.base.repository.BaseRepository;
+import by.zeus.demo.base.service.BaseService;
+import by.zeus.demo.category.domain.Category;
+import by.zeus.demo.category.domain.CategoryDetails;
+import by.zeus.demo.category.repository.CategoryRepository;
+import by.zeus.demo.category.web.dto.CategoryDetailsDto;
+import by.zeus.demo.category.web.dto.CategoryDto;
+import by.zeus.demo.category.web.mapper.CategoryDetailsMapper;
+import by.zeus.demo.category.web.mapper.CategoryMapper;
+import by.zeus.demo.product.domain.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CategoryService extends BaseService<Category>{
+public class CategoryService extends BaseService<Category> {
 
     private  final CategoryDetailsService categoryDetailsService;
-    private final CategoryRepository categoryRepository;
+    private final  CategoryRepository categoryRepository;
 
 
-    public CategoryService(BaseRepository<Category> repository, CategoryDetailsService categoryDetailsService, CategoryRepository categoryRepository) {
+    public CategoryService(BaseRepository<Category> repository, CategoryDetailsService categoryDetailsService,
+                           CategoryRepository categoryRepository) {
         super(repository);
         this.categoryDetailsService = categoryDetailsService;
         this.categoryRepository = categoryRepository;
     }
 
-    public Category toCategory(CategoryDto categoryDto,Category pcategory,List<CategoryDetails> categoryDetails) {
-        return CategoryMapper.toCategory(categoryDto,pcategory,categoryDetails);
+    public Category toCategory(CategoryDto categoryDto, Category pcategory, List<CategoryDetails> categoryDetails) {
+        return CategoryMapper.toCategory(categoryDto, pcategory, categoryDetails);
     }
 
     public Category create(CategoryDto categoryDto){
@@ -50,7 +52,7 @@ public class CategoryService extends BaseService<Category>{
     }
 
     public Category findByCategoryProductId(Product product){
-        List<Product> products=new ArrayList<>();
+        List<Product> products =new ArrayList<>();
         products.add(product);
         Category category=categoryRepository.findCategoryByProductSet(products);
         return category;

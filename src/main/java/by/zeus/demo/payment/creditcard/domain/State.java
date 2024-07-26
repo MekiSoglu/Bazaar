@@ -1,10 +1,11 @@
-package by.zeus.demo.entity;
+package by.zeus.demo.payment.creditcard.domain;
 
+import by.zeus.demo.base.domain.BaseEntity;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "entity")
-public class State extends BaseEntity{
+public class State extends BaseEntity {
     @Column(name = "name")
     private String name;
 

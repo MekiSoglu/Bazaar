@@ -1,8 +1,8 @@
-package by.zeus.demo.controller;
+package by.zeus.demo.payment.creditcard.web.rest;
 
-import by.zeus.demo.dto.StateDto;
-import by.zeus.demo.entity.State;
-import by.zeus.demo.service.StateService;
+import by.zeus.demo.payment.creditcard.service.StateService;
+import by.zeus.demo.payment.creditcard.web.dto.StateDto;
+import by.zeus.demo.payment.creditcard.domain.State;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,18 +1,17 @@
-package by.zeus.demo.Mapper;
+package by.zeus.demo.category.web.mapper;
 
-import by.zeus.demo.dto.CategoryDetailsDto;
-import by.zeus.demo.entity.Category;
-import by.zeus.demo.entity.CategoryDetails;
-import by.zeus.demo.service.CategoryService;
-import org.mapstruct.Mapper;
+import by.zeus.demo.category.domain.Category;
+import by.zeus.demo.category.domain.CategoryDetails;
+import by.zeus.demo.category.service.CategoryService;
+import by.zeus.demo.category.web.dto.CategoryDetailsDto;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
 @Configuration
 public class CategoryDetailsMapper {
-    private static  CategoryService categoryService = null;
-    public static List<Long> Ids;
+    private static CategoryService categoryService = null;
+    public static  List<Long>      Ids;
 
     public CategoryDetailsMapper(CategoryService categoryService) {
         CategoryDetailsMapper.categoryService = categoryService;

@@ -1,11 +1,9 @@
-package by.zeus.demo.controller;
+package by.zeus.demo.category.web.rest;
 
-import by.zeus.demo.Mapper.CategoryDetailsMapper;
-import by.zeus.demo.Mapper.CategoryMapper;
-import by.zeus.demo.dto.CategoryDetailsDto;
-import by.zeus.demo.dto.CategoryDto;
-import by.zeus.demo.entity.CategoryDetails;
-import by.zeus.demo.service.CategoryDetailsService;
+import by.zeus.demo.category.domain.CategoryDetails;
+import by.zeus.demo.category.service.CategoryDetailsService;
+import by.zeus.demo.category.web.dto.CategoryDetailsDto;
+import by.zeus.demo.category.web.mapper.CategoryDetailsMapper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

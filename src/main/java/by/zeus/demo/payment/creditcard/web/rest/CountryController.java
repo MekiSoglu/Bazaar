@@ -1,7 +1,7 @@
-package by.zeus.demo.controller;
+package by.zeus.demo.payment.creditcard.web.rest;
 
-import by.zeus.demo.entity.Country;
-import by.zeus.demo.service.CountryService;
+import by.zeus.demo.payment.creditcard.domain.Country;
+import by.zeus.demo.payment.creditcard.service.CountryService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

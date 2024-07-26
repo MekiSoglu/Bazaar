@@ -1,11 +1,11 @@
 package by.zeus.demo.category.service;
 
-import by.zeus.demo.category.web.mapper.CategoryDetailsMapper;
 import by.zeus.demo.base.repository.BaseRepository;
 import by.zeus.demo.category.repository.CategoryDetailsRepository;
 import by.zeus.demo.category.web.dto.CategoryDetailsDto;
 import by.zeus.demo.category.domain.CategoryDetails;
 import by.zeus.demo.base.service.BaseService;
+import by.zeus.demo.category.web.mapper.CategoryDetailsMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

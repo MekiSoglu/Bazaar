@@ -1,7 +1,7 @@
-package by.zeus.demo.dao;
+package by.zeus.demo.payment.creditcard.repository;
 
-import by.zeus.demo.entity.Country;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import by.zeus.demo.base.repository.BaseRepository;
+import by.zeus.demo.payment.creditcard.domain.Country;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin( "http://localhost:4200" )

@@ -1,4 +1,4 @@
-package by.zeus.demo.dto;
+package by.zeus.demo.payment.creditcard.web.dto;
 
 public class StateDto {
     String name;

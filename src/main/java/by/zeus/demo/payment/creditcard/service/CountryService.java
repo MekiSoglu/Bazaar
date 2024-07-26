@@ -1,7 +1,8 @@
-package by.zeus.demo.service;
+package by.zeus.demo.payment.creditcard.service;
 
-import by.zeus.demo.dao.BaseRepository;
-import by.zeus.demo.entity.Country;
+import by.zeus.demo.base.repository.BaseRepository;
+import by.zeus.demo.base.service.BaseService;
+import by.zeus.demo.payment.creditcard.domain.Country;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

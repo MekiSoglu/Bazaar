@@ -1,16 +1,17 @@
-package by.zeus.demo.service;
+package by.zeus.demo.payment.creditcard.service;
 
-import by.zeus.demo.dao.BaseRepository;
-import by.zeus.demo.dao.StateRepository;
-import by.zeus.demo.dto.StateDto;
-import by.zeus.demo.entity.Country;
-import by.zeus.demo.entity.State;
+import by.zeus.demo.base.repository.BaseRepository;
+import by.zeus.demo.base.service.BaseService;
+import by.zeus.demo.payment.creditcard.web.dto.StateDto;
+import by.zeus.demo.payment.creditcard.repository.StateRepository;
+import by.zeus.demo.payment.creditcard.domain.Country;
+import by.zeus.demo.payment.creditcard.domain.State;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class StateService extends BaseService<State>{
-    private final CountryService countryService;
+public class StateService extends BaseService<State> {
+    private final CountryService  countryService;
     private final StateRepository stateRepository;
     public StateService(BaseRepository<State> repository, CountryService countryService, StateRepository stateRepository) {
         super(repository);

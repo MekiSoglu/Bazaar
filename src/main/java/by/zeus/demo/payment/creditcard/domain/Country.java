@@ -1,9 +1,9 @@
-package by.zeus.demo.entity;
+package by.zeus.demo.payment.creditcard.domain;
+import by.zeus.demo.base.domain.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-import java.util.List;
 
 @Entity
 @Table(name = "country")
