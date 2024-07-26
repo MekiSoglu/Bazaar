@@ -7,13 +7,12 @@ import by.zeus.demo.entity.Category;
 import by.zeus.demo.entity.CategoryDetails;
 import by.zeus.demo.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/category")
-@CrossOrigin ( {"http://localhost:4401", "http://localhost:4200"} )
+@CrossOrigin( {"http://localhost:4401", "http://localhost:4200"} )
 
 public class CategoryController {
     private final CategoryService categoryService;

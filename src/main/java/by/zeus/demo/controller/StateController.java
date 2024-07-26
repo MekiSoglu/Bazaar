@@ -10,7 +10,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/state")
 @CrossOrigin ( {"http://localhost:4401", "http://localhost:4200"} )
-public class StateController {
+public class
+StateController {
     private final StateService service;
 
     public StateController(StateService service) {
