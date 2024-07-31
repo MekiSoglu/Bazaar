@@ -13,6 +13,7 @@ public class MediaService extends BaseService<MediaEntity> {
         super(repository);
     }
 
+
     @Override
     public MediaRepository getRepository() {
         return (MediaRepository) super.getRepository();

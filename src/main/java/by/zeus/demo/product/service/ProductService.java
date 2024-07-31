@@ -3,7 +3,6 @@ import by.zeus.demo.product.web.mapper.ProductMapper;
 import by.zeus.demo.category.service.CategoryService;
 import by.zeus.demo.base.repository.BaseRepository;
 import by.zeus.demo.product.repository.ProductRepository;
-import by.zeus.demo.product.web.dto.ProductDto;
 import by.zeus.demo.category.domain.Category;
 import by.zeus.demo.category.domain.CategoryDetails;
 import by.zeus.demo.product.domain.Product;
@@ -12,8 +11,9 @@ import by.zeus.demo.base.service.BaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,64 +24,36 @@ public class ProductService extends BaseService<Product> {
     private final ProductRepository     productRepository;
     private final ProductDetailsService productDetailsService;
 
-    public ProductService(BaseRepository<Product> repository, CategoryService categoryService, ProductRepository productRepository, ProductDetailsService productDetailsService) {
+    private final ProductMapper productMapper;
+
+    public ProductService(BaseRepository<Product> repository, CategoryService categoryService, ProductRepository productRepository, ProductDetailsService productDetailsService,
+                          final ProductMapper productMapper) {
         super(repository);
         this.categoryService = categoryService;
         this.productRepository = productRepository;
         this.productDetailsService = productDetailsService;
+        this.productMapper = productMapper;
     }
 
-    public Product create(ProductDto productDto){
-        Category category= categoryService.findOne(productDto.getCategory_id()).get();
-        Product product=ProductMapper.toProduct(productDto,category);
-        return create(product);
-    }
-
-    public Page<ProductDto> pageable(List<ProductDto> products, int page, int size) {
+    public Page<Product> pageable(List<Product> products, Pageable pageable) {
+        int page=pageable.getPageNumber();
+        int size=pageable.getPageSize();
         int startIndex = (page - 1) * size;
         int endIndex = Math.min(startIndex + size, products.size());
-        List<ProductDto> pageContent = products.subList(startIndex, endIndex);
+        List<Product> pageContent = products.subList(startIndex, endIndex);
         long totalElements = products.size();
         return new PageImpl<>(pageContent, PageRequest.of(page - 1, size), totalElements);
     }
 
-    public List<ProductDto> listDto(List<Product> products){
-        List<ProductDto> result = new ArrayList<>();
-        for(Product product:products){
-            result.add(ProductMapper.toProductDto(product));
-        }
-        return result;
-    }
 
-    public Page<ProductDto> getAll(int page,int size){
-        List<Product> products= findAll();
-        return pageable(listDto(products),page,size);
-    }
-
-    public List<ProductDto> getAll(){
-        List<Product> products= findAll();
-        List<ProductDto> productDtos= new ArrayList<>();
-        for(Product product:products){
-            productDtos.add(ProductMapper.toProductDto(product));
-        }
-        return productDtos;
-    }
-    //a
-
-    public Product update(ProductDto product){
-        Category category=categoryService.findOne(product.getCategory_id()).get();
-        Product model=ProductMapper.toProduct(product,category);
-        return Update(model);
-    }
-
-    public Page<ProductDto> findByCategoryId(Long id,int page,int size) {
+    public Page<Product> findByCategoryId(Long id, Pageable pageable) {
         List<Product> products=productRepository.findByCategoryId(id);
-        return  pageable(listDto(products),page,size);
+        return  pageable(products,pageable);
     }
 
-    public Page<ProductDto> findByName(String name,int page,int size) {
+    public Page<Product> findByName(String name,Pageable pageable) {
         List<Product> products=productRepository.findByNameContaining(name);
-        return  pageable(listDto(products),page,size);
+        return  pageable(products,pageable);
     }
 
     public Map<String,String> showDetails(Long Id){

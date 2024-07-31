@@ -1,6 +1,8 @@
 package by.zeus.demo.payment.creditcard.web.dto;
 
-public class StateDto {
+import by.zeus.demo.base.web.dto.BaseDTO;
+
+public class StateDto extends BaseDTO {
     String name;
 
     public String getName() {

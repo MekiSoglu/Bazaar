@@ -12,25 +12,23 @@ import java.util.List;
 
 @Service
 public class CategoryDetailsService extends BaseService<CategoryDetails> {
-   private final CategoryDetailsRepository categoryRepository;
 
-    public CategoryDetailsService(BaseRepository<CategoryDetails> repository, CategoryDetailsRepository categoryRepository) {
+
+    public CategoryDetailsService(BaseRepository<CategoryDetails> repository) {
         super(repository);
-        this.categoryRepository = categoryRepository;
+
     }
 
     public List<CategoryDetails> findAll(List<Long> Ids){
-        return categoryRepository.findCategoryDetailsBy(Ids);
+        return getRepository().findCategoryDetailsBy(Ids);
     }
 
-    public void create(CategoryDetailsDto categoryDetailsDto){
-        CategoryDetails categoryDetails= CategoryDetailsMapper.toCategoryDetails(categoryDetailsDto);
-        create(categoryDetails);
+
+
+    @Override
+    public CategoryDetailsRepository getRepository(){
+        return (CategoryDetailsRepository) super.getRepository();
     }
 
-    public void Update(CategoryDetailsDto categoryDetailsDto){
-        CategoryDetails categoryDetails= CategoryDetailsMapper.toCategoryDetails(categoryDetailsDto);
-        Update(categoryDetails);
-    }
 
 }

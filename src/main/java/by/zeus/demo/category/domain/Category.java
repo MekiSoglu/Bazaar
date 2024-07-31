@@ -5,6 +5,7 @@ import by.zeus.demo.product.domain.Product;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -12,21 +13,24 @@ import java.util.Set;
 @Table(name="categories")
 public class Category extends BaseEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-    Category parent;
+    @Column(name="parent_id")
+    private Long parentId;
 
     @Column
     String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
-    Set<Product> productSet;
+    Set<Product> productSet = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "category_category_details",
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "category_details_id"))
     private List<CategoryDetails> categoryDetailsList = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id" ,insertable = false,updatable = false)
+    Category parent;
 
     public List<CategoryDetails> getCategoryDetailsList() {
         return categoryDetailsList;
@@ -40,12 +44,9 @@ public class Category extends BaseEntity {
         return parent;
     }
 
-//tesst
     public void setParent(Category parent) {
         this.parent = parent;
     }
-
-    //sdfsdfsd
 
     public String getCategoryName() {
         return categoryName;
@@ -62,6 +63,12 @@ public class Category extends BaseEntity {
     public void setProductSet(Set<Product> productSet) {
         this.productSet = productSet;
     }
-// brench deneme
 
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(final Long parentId) {
+        this.parentId = parentId;
+    }
 }

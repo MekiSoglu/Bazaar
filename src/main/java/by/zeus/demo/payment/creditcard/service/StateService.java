@@ -29,6 +29,7 @@ public class StateService extends BaseService<State> {
     public List<State> getAllState(String code){
         return stateRepository.findByCountry_Code(code);
     }
+    /*
     public State createState(StateDto stateDto){
         State state=new State();
         state.setName(stateDto.getName());
@@ -37,4 +38,6 @@ public class StateService extends BaseService<State> {
         create(state);
         return state;
     }
+
+     */
 }
