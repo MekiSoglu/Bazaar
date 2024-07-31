@@ -1,23 +1,17 @@
-package by.zeus.demo.product.domain;
-import by.zeus.demo.base.domain.BaseEntity;
-import jakarta.persistence.*;
+package by.zeus.demo.product.web.dto;
 
+import by.zeus.demo.base.web.dto.BaseDTO;
 
-@Entity
-public class ProductDetails extends BaseEntity {
-
-    @Column(nullable = false)
+public class ProductDetailsDTO extends BaseDTO {
     private String value;
-    @Column(nullable = false)
     private Long productId;
-    @Column(nullable = false)
     private Long categoryDetailsId;
 
     public String getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(final String value) {
         this.value = value;
     }
 
@@ -25,7 +19,7 @@ public class ProductDetails extends BaseEntity {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(final Long productId) {
         this.productId = productId;
     }
 
@@ -33,7 +27,7 @@ public class ProductDetails extends BaseEntity {
         return categoryDetailsId;
     }
 
-    public void setCategoryDetailsId(Long categoryDetailsId) {
+    public void setCategoryDetailsId(final Long categoryDetailsId) {
         this.categoryDetailsId = categoryDetailsId;
     }
 }

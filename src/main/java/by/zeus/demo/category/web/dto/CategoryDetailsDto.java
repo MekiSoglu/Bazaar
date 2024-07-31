@@ -1,27 +1,21 @@
 package by.zeus.demo.category.web.dto;
 
+import by.zeus.demo.base.web.dto.BaseDTO;
+
 import java.util.List;
 
-public class CategoryDetailsDto {
-    Long id;
+public class CategoryDetailsDto extends BaseDTO {
 
     String name;
 
-    List<Long> categoryList;
+    List<CategoryDetailsDto> categoryList;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<Long> getCategoryList() {
+    public List<CategoryDetailsDto> getCategoryList() {
         return categoryList;
     }
 
-    public void setCategoryList(List<Long> categoryList) {
+    public void setCategoryList(final List<CategoryDetailsDto> categoryList) {
         this.categoryList = categoryList;
     }
 

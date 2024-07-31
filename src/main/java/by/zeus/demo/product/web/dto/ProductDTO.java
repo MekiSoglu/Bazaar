@@ -1,9 +1,11 @@
 package by.zeus.demo.product.web.dto;
 
+import by.zeus.demo.base.web.dto.BaseDTO;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class ProductDto {
+public class ProductDTO extends BaseDTO {
 
     Long id;
 
@@ -120,9 +122,5 @@ public class ProductDto {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
-
-
 
 }

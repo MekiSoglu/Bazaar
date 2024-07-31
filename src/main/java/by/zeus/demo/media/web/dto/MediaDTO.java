@@ -1,8 +1,19 @@
 package by.zeus.demo.media.web.dto;
+import by.zeus.demo.base.web.dto.BaseDTO;
 import by.zeus.demo.media.enumaration.MediaContentType;
 import java.time.ZonedDateTime;
 
-public class MediaDTO {
+public class MediaDTO extends BaseDTO {
+
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
+    }
 
     private String fileName;
 

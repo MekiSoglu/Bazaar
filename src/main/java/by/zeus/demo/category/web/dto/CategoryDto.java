@@ -1,33 +1,20 @@
 package by.zeus.demo.category.web.dto;
 
+import by.zeus.demo.base.web.dto.BaseDTO;
+
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-public class CategoryDto {
 
-    Long id;
+public class CategoryDto extends BaseDTO {
 
-    Long parent_id;
+    Long parentId;
 
     String categoryName;
 
-    Set<Long> product_Id;
-    List<Long> categoryDetailsId;
+   // Set<ProductDto> productSet =new HashSet<>();
 
-    public List<Long> getCategoryDetailsId() {
-        return categoryDetailsId;
-    }
+    List<CategoryDetailsDto> categoryDetailsList=new ArrayList<>();
 
-    public void setCategoryDetailsId(List<Long> categoryDetailsId) {
-        this.categoryDetailsId = categoryDetailsId;
-    }
-
-    public Set<Long> getProduct_Id() {
-        return product_Id;
-    }
-
-    public void setProduct_Id(Set<Long> product_Id) {
-        this.product_Id = product_Id;
-    }
 
     int version;
 
@@ -39,23 +26,6 @@ public class CategoryDto {
         this.version = version;
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getParent_id() {
-        return parent_id;
-    }
-
-    public void setParent_id(Long parent_id) {
-        this.parent_id = parent_id;
-    }
-
     public String getCategoryName() {
         return categoryName;
     }
@@ -64,4 +34,31 @@ public class CategoryDto {
         this.categoryName = categoryName;
     }
 
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(final Long parentId) {
+        this.parentId = parentId;
+    }
+
+    /*
+
+    public Set<ProductDto> getProductSet() {
+        return productSet;
+    }
+
+    public void setProductSet(final Set<ProductDto> productSet) {
+        this.productSet = productSet;
+    }
+
+
+     */
+    public List<CategoryDetailsDto> getCategoryDetailsList() {
+        return categoryDetailsList;
+    }
+
+    public void setCategoryDetailsList(final List<CategoryDetailsDto> categoryDetailsList) {
+        this.categoryDetailsList = categoryDetailsList;
+    }
 }

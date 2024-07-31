@@ -1,82 +1,54 @@
 package by.zeus.demo.product.web.rest;
 
-import by.zeus.demo.product.web.mapper.ProductMapper;
-import by.zeus.demo.product.web.dto.ProductDto;
-import by.zeus.demo.product.service.ProductService;
+import by.zeus.demo.base.web.rest.BaseResource;
+import by.zeus.demo.product.domain.Product;
+import by.zeus.demo.product.facade.ProductFacade;
+import by.zeus.demo.product.web.dto.ProductDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
+
 
 @RestController
 @RequestMapping("/products")
 @CrossOrigin ( {"http://localhost:4401", "http://localhost:4200"} )
+public class ProductController  extends BaseResource<ProductDTO, Product> {
 
-public class ProductController {
-    private final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
-    @GetMapping("/{Id}")
-    public ProductDto getProduct(@PathVariable Long Id){
-        return ProductMapper.toProductDto(productService.findOne(Id).get());
-    }
 
     @GetMapping("")
-    public Page<ProductDto> getAllProducts(Pageable pageable){
-        int page=pageable.getPageNumber();
-        int size=pageable.getPageSize();
-        return productService.getAll(page,size);
-    }
-
-    @GetMapping("/getProducts")
-    public List<ProductDto> getAllProducts(){
-        return productService.getAll();
+    public Page<ProductDTO> getAllProducts(Pageable pageable){
+        return getFacade().findAll(pageable);
     }
 
     @GetMapping("/show/{Id}")
     public Map<String, String> ShowDetails(@PathVariable Long Id){
-        return productService.showDetails(Id);
+        return getFacade().showDetails(Id);
     }
 
     //webhook
     @GetMapping("category/{Id}")
-    public Page<ProductDto> findByCategoryId(@PathVariable Long Id,Pageable pageable){
-        int page=pageable.getPageNumber();
-        int size=pageable.getPageSize();
-        return productService.findByCategoryId(Id,page,size);
+    public Page<ProductDTO> findByCategoryId(@PathVariable Long Id, Pageable pageable){
+        return getFacade().findByCategoryId(Id,pageable);
     }
 
     @GetMapping("search/{name}")
-    public Page<ProductDto> findByName(@PathVariable String name,Pageable pageable){
-        int page=pageable.getPageNumber();
-        int size=pageable.getPageSize();
-        return productService.findByName(name,page,size);
+    public Page<ProductDTO> findByName(@PathVariable String name, Pageable pageable){
+        return getFacade().findByName(name,pageable);
     }
 
-    @PutMapping("")
-    public void updateProduct(@RequestBody ProductDto productDto){
-        productService.update(productDto);
+    public ProductController(final ProductFacade facade) {
+        super(facade);
     }
 
-    @PostMapping("")
-    public void create(@RequestBody ProductDto product){
-        productService.create(product);
+    @Override
+    public Class<?> getLoggerClass() {
+        return this.getClass();
     }
 
-    @DeleteMapping("/{Id}")
-    public void delete(@PathVariable Long Id){
-        productService.delete(Id);
+    @Override
+    public ProductFacade getFacade() {
+        return (ProductFacade) super.getFacade();
     }
-
-    @DeleteMapping()
-    public void deleteAll(){
-        productService.deleteAll();
-    }
-
-
 }

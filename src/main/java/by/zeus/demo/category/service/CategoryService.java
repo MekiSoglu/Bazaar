@@ -6,7 +6,6 @@ import by.zeus.demo.category.domain.Category;
 import by.zeus.demo.category.domain.CategoryDetails;
 import by.zeus.demo.category.repository.CategoryRepository;
 import by.zeus.demo.category.web.dto.CategoryDetailsDto;
-import by.zeus.demo.category.web.dto.CategoryDto;
 import by.zeus.demo.category.web.mapper.CategoryDetailsMapper;
 import by.zeus.demo.category.web.mapper.CategoryMapper;
 import by.zeus.demo.product.domain.Product;
@@ -21,34 +20,19 @@ public class CategoryService extends BaseService<Category> {
     private  final CategoryDetailsService categoryDetailsService;
     private final  CategoryRepository categoryRepository;
 
+    private final CategoryMapper categoryMapper;
+
+    private final CategoryDetailsMapper categoryDetailsMapper;
+
 
     public CategoryService(BaseRepository<Category> repository, CategoryDetailsService categoryDetailsService,
-                           CategoryRepository categoryRepository) {
+                           CategoryRepository categoryRepository, final CategoryMapper categoryMapper,
+                           final CategoryDetailsMapper categoryDetailsMapper) {
         super(repository);
         this.categoryDetailsService = categoryDetailsService;
         this.categoryRepository = categoryRepository;
-    }
-
-    public Category toCategory(CategoryDto categoryDto, Category pcategory, List<CategoryDetails> categoryDetails) {
-        return CategoryMapper.toCategory(categoryDto, pcategory, categoryDetails);
-    }
-
-    public Category create(CategoryDto categoryDto){
-        Category category=CategoryMapper.toCategory(categoryDto,null,null);
-        List<CategoryDetails>  categoryDetails=categoryDetailsService.findAll(categoryDto.getCategoryDetailsId());
-
-        if(categoryDto.getParent_id()!=null){
-            Category pCategory=findOne(categoryDto.getParent_id()).get();
-            category=toCategory(categoryDto,pCategory,categoryDetails);
-        }
-        return create(category);
-    }
-
-    public Category Update(CategoryDto dto) {
-        Category pCategory=findOne(dto.getParent_id()).get();
-        List<CategoryDetails>  categoryDetails=categoryDetailsService.findAll(dto.getCategoryDetailsId());
-        Category model=toCategory(dto,pCategory,categoryDetails);
-        return super.Update(model);
+        this.categoryMapper = categoryMapper;
+        this.categoryDetailsMapper = categoryDetailsMapper;
     }
 
     public Category findByCategoryProductId(Product product){
@@ -62,7 +46,7 @@ public class CategoryService extends BaseService<Category> {
         List<CategoryDetails> categoryDetailsList = categoryRepository.findCategoryDetailsByCategoryId(categoryId);
         List<CategoryDetailsDto> categoryDetailsDtos=new ArrayList<>();
         for(CategoryDetails categoryDetails:categoryDetailsList){
-            categoryDetailsDtos.add(CategoryDetailsMapper.toDto(categoryDetails));
+            categoryDetailsDtos.add(categoryDetailsMapper.toDto(categoryDetails));
         }
        return categoryDetailsDtos;
     }
