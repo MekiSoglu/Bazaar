@@ -10,5 +10,6 @@ import org.springframework.context.annotation.Configuration;
 @Mapper(componentModel = "spring")
 
 public interface MediaMapper  extends BaseMapper<MediaDTO,MediaEntity> {
+    //deneme jenkisn
 
 }
