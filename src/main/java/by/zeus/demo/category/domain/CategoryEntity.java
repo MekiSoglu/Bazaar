@@ -19,8 +19,8 @@ public class CategoryEntity extends BaseEntity {
     @Column
     String categoryName;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
-    Set<ProductEntity> productEntitySet = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryEntity")
+    private Set<ProductEntity> productEntitySet = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "category_category_details",

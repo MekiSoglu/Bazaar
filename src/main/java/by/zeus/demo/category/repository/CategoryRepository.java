@@ -15,7 +15,7 @@ public interface CategoryRepository extends BaseRepository<CategoryEntity> {
     @Query("SELECT c FROM CategoryEntity c WHERE c.id IN (:Ids)")
     List<CategoryEntity> findCategoriesBy(List<Long> Ids);
 
-    CategoryEntity findCategoryByProductSet(List<ProductEntity> productEntityList);
+    CategoryEntity findCategoryByProductEntitySet(List<ProductEntity> productEntityList);
 
     @Query("SELECT c.categoryDetailsEntityList FROM CategoryEntity c WHERE c.id = :id")
     List<CategoryDetailsEntity> findCategoryDetailsByCategoryId(Long id);

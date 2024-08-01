@@ -21,11 +21,11 @@ public class StateService extends BaseService<StateEntity> {
     }
 
     public List<StateEntity> getAllState(Long countryId){
-        return stateRepository.findByCountry_Id(countryId);
+        return stateRepository.findByCountryEntity_Id(countryId);
     }
 
     public List<StateEntity> getAllState(String code){
-        return stateRepository.findByCountry_Code(code);
+        return stateRepository.findByCountryEntity_Code(code);
     }
     /*
     public State createState(StateDto stateDto){

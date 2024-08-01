@@ -38,7 +38,7 @@ public class CategoryService extends BaseService<CategoryEntity> {
     public CategoryEntity findByCategoryProductId(ProductEntity productEntity){
         List<ProductEntity> productEntities =new ArrayList<>();
         productEntities.add(productEntity);
-        CategoryEntity categoryEntity =categoryRepository.findCategoryByProductSet(productEntities);
+        CategoryEntity categoryEntity =categoryRepository.findCategoryByProductEntitySet(productEntities);
         return categoryEntity;
     }
 
