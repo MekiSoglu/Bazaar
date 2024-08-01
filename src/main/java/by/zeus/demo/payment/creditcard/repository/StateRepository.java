@@ -7,6 +7,6 @@ import by.zeus.demo.payment.creditcard.domain.StateEntity;
 import java.util.List;
 
 public interface StateRepository extends BaseRepository<StateEntity> {
-    List<StateEntity> findByCountry_Id(Long countryId);
-    List<StateEntity> findByCountry_Code(String countryCode);
+    List<StateEntity> findByCountryEntity_Id(Long countryId);
+    List<StateEntity> findByCountryEntity_Code(String countryCode);
 }

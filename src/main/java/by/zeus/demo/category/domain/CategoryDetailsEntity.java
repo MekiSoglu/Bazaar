@@ -7,12 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "category_details")
 public class CategoryDetailsEntity extends BaseEntity {
 
     @Column()
     String name;
 
-    @ManyToMany(mappedBy = "categoryDetailsList", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "categoryDetailsEntityList", fetch = FetchType.LAZY)
     private List<CategoryEntity> categoryEntityList = new ArrayList<>();
 
 
