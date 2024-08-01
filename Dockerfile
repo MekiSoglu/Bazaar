@@ -15,3 +15,41 @@ ADD target/devops-integration.jar devops-integration.jar
 EXPOSE 80
 
 CMD ["java", "-jar", "devops-integration.jar"]
+
+
+pipeline{
+    agent any
+    tools{
+        maven 'Maven3'
+    }
+    stages{
+        stage('Build Maven'){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/MekiSoglu/Bazaar']])
+                sh 'mvn clean install'
+            }
+        }
+        stage('Build docker image'){
+            steps{
+                sh 'docker build -t zeus12419/devops-integration:latest .'
+            }
+        }
+        stage('Push image to Hub '){
+            steps{
+                withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                sh 'docker login -u zeus12419 -p ${dockerhubpwd}'
+}
+                sh 'docker push zeus12419/devops-integration'
+            }
+        }
+        stage('Compose docker image'){
+            steps{
+                sh 'docker-compose -f docker-compose.yml up -d'
+            }
+        }
+
+    }
+}
+
+withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')])
+

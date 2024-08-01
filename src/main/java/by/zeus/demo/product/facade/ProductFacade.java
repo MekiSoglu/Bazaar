@@ -1,7 +1,7 @@
 package by.zeus.demo.product.facade;
 
 import by.zeus.demo.base.facade.BaseFacade;
-import by.zeus.demo.product.domain.Product;
+import by.zeus.demo.product.domain.ProductEntity;
 import by.zeus.demo.product.service.ProductService;
 import by.zeus.demo.product.web.dto.ProductDTO;
 import by.zeus.demo.product.web.mapper.ProductMapper;
@@ -14,31 +14,30 @@ import java.util.Map;
 
 @Service
 @Transactional
-public class ProductFacade extends BaseFacade<ProductDTO, Product> {
+public class ProductFacade extends BaseFacade<ProductDTO, ProductEntity> {
 
     public ProductFacade(final ProductService service, final ProductMapper mapper) {
         super(service, mapper);
     }
     @Override
     public Page<ProductDTO> findAll(final Pageable pageable) {
-        Page<Product> productPage = getService().findAll(pageable);
+        Page<ProductEntity> productPage = getService().findAll(pageable);
         return productPage.map(getMapper()::toDto);
     }
 
     public Page<ProductDTO> findByCategoryId(Long categoryId , Pageable pageable) {
-        Page<Product> productPage = getService().findByCategoryId(categoryId,pageable);
+        Page<ProductEntity> productPage = getService().findByCategoryId(categoryId,pageable);
         return productPage.map(getMapper()::toDto);
     }
 
     public Page<ProductDTO> findByName(String name , Pageable pageable) {
-        Page<Product> productPage = getService().findByName(name,pageable);
+        Page<ProductEntity> productPage = getService().findByName(name,pageable);
         return productPage.map(getMapper()::toDto);
     }
 
     public Map<String,String> showDetails(Long Id){
         return getService().showDetails(Id);
     }
-
 
     @Override
     public ProductService getService() {

@@ -9,7 +9,7 @@ public class ProductDTO extends BaseDTO {
 
     Long id;
 
-    Long category_id;
+    Long categoryId;
 
     String sku;
 
@@ -39,12 +39,12 @@ public class ProductDTO extends BaseDTO {
         this.id = id;
     }
 
-    public Long getCategory_id() {
-        return category_id;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(Long category_id) {
-        this.category_id = category_id;
+    public void setCategoryId(final Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getSku() {

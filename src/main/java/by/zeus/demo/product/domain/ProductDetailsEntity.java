@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
-public class ProductDetails extends BaseEntity {
+public class ProductDetailsEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String value;

@@ -1,7 +1,7 @@
 package by.zeus.demo.product.domain;
 
 import by.zeus.demo.base.domain.BaseEntity;
-import by.zeus.demo.category.domain.Category;
+import by.zeus.demo.category.domain.CategoryEntity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -10,20 +10,23 @@ import java.util.Date;
 
 @Entity
 @Table(name = "product")
-public class Product extends BaseEntity {
+public class ProductEntity extends BaseEntity {
 
 
-    public Category getCategory() {
-        return category;
+    public CategoryEntity getCategory() {
+        return categoryEntity;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     @ManyToOne
-    @JoinColumn(name = "category_id",nullable = false)
-    Category category;
+    @JoinColumn(name = "category_id",nullable = false ,insertable = false,updatable = false)
+    CategoryEntity categoryEntity;
+
+    @Column(name = "category_id")
+    private Long categoryId;
 
     @Column
     String sku;
@@ -131,6 +134,22 @@ public class Product extends BaseEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
+    }
+
+    public void setCategoryEntity(final CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(final Long categoryId) {
+        this.categoryId = categoryId;
     }
 
 

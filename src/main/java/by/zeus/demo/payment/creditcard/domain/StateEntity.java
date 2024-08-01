@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "entity")
-public class State extends BaseEntity {
+public class StateEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
-    private Country country;
+    private CountryEntity countryEntity;
 
     public String getName() {
         return name;
@@ -21,11 +21,11 @@ public class State extends BaseEntity {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
+    public CountryEntity getCountry() {
+        return countryEntity;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountry(CountryEntity countryEntity) {
+        this.countryEntity = countryEntity;
     }
 }

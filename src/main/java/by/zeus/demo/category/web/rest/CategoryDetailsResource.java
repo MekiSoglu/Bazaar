@@ -1,9 +1,9 @@
 package by.zeus.demo.category.web.rest;
 
 import by.zeus.demo.base.web.rest.BaseResource;
-import by.zeus.demo.category.domain.CategoryDetails;
+import by.zeus.demo.category.domain.CategoryDetailsEntity;
 import by.zeus.demo.category.facade.CategoryDetailsFacade;
-import by.zeus.demo.category.web.dto.CategoryDetailsDto;
+import by.zeus.demo.category.web.dto.CategoryDetailsDTO;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/catDetails")
 @CrossOrigin ( {"http://localhost:4401", "http://localhost:4200"} )
 
-public class CategoryDetailsController extends BaseResource<CategoryDetailsDto,CategoryDetails> {
+public class CategoryDetailsResource extends BaseResource<CategoryDetailsDTO, CategoryDetailsEntity> {
 
 
-    public CategoryDetailsController(final CategoryDetailsFacade facade) {
+    public CategoryDetailsResource(final CategoryDetailsFacade facade) {
         super(facade);
     }
 

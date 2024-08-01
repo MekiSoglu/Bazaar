@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class CategoryDetails extends BaseEntity {
+public class CategoryDetailsEntity extends BaseEntity {
 
     @Column()
     String name;
 
     @ManyToMany(mappedBy = "categoryDetailsList", fetch = FetchType.LAZY)
-    private List<Category> categoryList = new ArrayList<>();
+    private List<CategoryEntity> categoryEntityList = new ArrayList<>();
 
 
     public String getName() {
@@ -24,11 +24,11 @@ public class CategoryDetails extends BaseEntity {
         this.name = name;
     }
 
-    public List<Category> getCategoryList() {
-        return categoryList;
+    public List<CategoryEntity> getCategoryList() {
+        return categoryEntityList;
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    public void setCategoryList(List<CategoryEntity> categoryEntityList) {
+        this.categoryEntityList = categoryEntityList;
     }
 }
