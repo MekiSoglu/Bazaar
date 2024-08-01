@@ -4,18 +4,18 @@ import by.zeus.demo.base.web.dto.BaseDTO;
 
 import java.util.List;
 
-public class CategoryDetailsDto extends BaseDTO {
+public class CategoryDetailsDTO extends BaseDTO {
 
     String name;
 
-    List<CategoryDetailsDto> categoryList;
+    List<CategoryDetailsDTO> categoryList;
 
 
-    public List<CategoryDetailsDto> getCategoryList() {
+    public List<CategoryDetailsDTO> getCategoryList() {
         return categoryList;
     }
 
-    public void setCategoryList(final List<CategoryDetailsDto> categoryList) {
+    public void setCategoryList(final List<CategoryDetailsDTO> categoryList) {
         this.categoryList = categoryList;
     }
 

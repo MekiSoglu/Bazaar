@@ -3,8 +3,6 @@ package by.zeus.demo.base.web.mapper;
 
 import by.zeus.demo.base.domain.BaseEntity;
 import by.zeus.demo.base.web.dto.BaseDTO;
-import by.zeus.demo.category.domain.CategoryDetails;
-import by.zeus.demo.category.web.dto.CategoryDetailsDto;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;

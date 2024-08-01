@@ -5,7 +5,7 @@ import by.zeus.demo.base.web.dto.BaseDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDto extends BaseDTO {
+public class CategoryDTO extends BaseDTO {
 
     Long parentId;
 
@@ -13,7 +13,7 @@ public class CategoryDto extends BaseDTO {
 
    // Set<ProductDto> productSet =new HashSet<>();
 
-    List<CategoryDetailsDto> categoryDetailsList=new ArrayList<>();
+    List<CategoryDetailsDTO> categoryDetailsList=new ArrayList<>();
 
 
     int version;
@@ -54,11 +54,11 @@ public class CategoryDto extends BaseDTO {
 
 
      */
-    public List<CategoryDetailsDto> getCategoryDetailsList() {
+    public List<CategoryDetailsDTO> getCategoryDetailsList() {
         return categoryDetailsList;
     }
 
-    public void setCategoryDetailsList(final List<CategoryDetailsDto> categoryDetailsList) {
+    public void setCategoryDetailsList(final List<CategoryDetailsDTO> categoryDetailsList) {
         this.categoryDetailsList = categoryDetailsList;
     }
 }

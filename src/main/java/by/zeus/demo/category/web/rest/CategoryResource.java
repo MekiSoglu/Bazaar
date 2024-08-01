@@ -1,18 +1,18 @@
 package by.zeus.demo.category.web.rest;
 
 import by.zeus.demo.base.web.rest.BaseResource;
-import by.zeus.demo.category.domain.Category;
+import by.zeus.demo.category.domain.CategoryEntity;
 import by.zeus.demo.category.facade.CategoryFacade;
-import by.zeus.demo.category.web.dto.CategoryDto;
+import by.zeus.demo.category.web.dto.CategoryDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/category")
 @CrossOrigin( {"http://localhost:4401", "http://localhost:4200"} )
 
-public class CategoryController extends BaseResource<CategoryDto,Category> {
+public class CategoryResource extends BaseResource<CategoryDTO, CategoryEntity> {
 
-    public CategoryController(final CategoryFacade facade) {
+    public CategoryResource(final CategoryFacade facade) {
         super(facade);
     }
 

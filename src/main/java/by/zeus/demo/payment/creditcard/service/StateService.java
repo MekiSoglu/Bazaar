@@ -2,31 +2,29 @@ package by.zeus.demo.payment.creditcard.service;
 
 import by.zeus.demo.base.repository.BaseRepository;
 import by.zeus.demo.base.service.BaseService;
-import by.zeus.demo.payment.creditcard.web.dto.StateDto;
+import by.zeus.demo.payment.creditcard.domain.StateEntity;
 import by.zeus.demo.payment.creditcard.repository.StateRepository;
-import by.zeus.demo.payment.creditcard.domain.Country;
-import by.zeus.demo.payment.creditcard.domain.State;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class StateService extends BaseService<State> {
+public class StateService extends BaseService<StateEntity> {
     private final CountryService  countryService;
     private final StateRepository stateRepository;
-    public StateService(BaseRepository<State> repository, CountryService countryService, StateRepository stateRepository) {
+    public StateService(BaseRepository<StateEntity> repository, CountryService countryService, StateRepository stateRepository) {
         super(repository);
         this.countryService = countryService;
         this.stateRepository = stateRepository;
     }
-    public List<State> getAllState() {
+    public List<StateEntity> getAllState() {
         return   getAllState();
     }
 
-    public List<State> getAllState(Long countryId){
+    public List<StateEntity> getAllState(Long countryId){
         return stateRepository.findByCountry_Id(countryId);
     }
 
-    public List<State> getAllState(String code){
+    public List<StateEntity> getAllState(String code){
         return stateRepository.findByCountry_Code(code);
     }
     /*

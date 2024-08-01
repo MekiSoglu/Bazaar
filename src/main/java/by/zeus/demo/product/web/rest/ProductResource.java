@@ -1,7 +1,7 @@
 package by.zeus.demo.product.web.rest;
 
 import by.zeus.demo.base.web.rest.BaseResource;
-import by.zeus.demo.product.domain.Product;
+import by.zeus.demo.product.domain.ProductEntity;
 import by.zeus.demo.product.facade.ProductFacade;
 import by.zeus.demo.product.web.dto.ProductDTO;
 import org.springframework.data.domain.Page;
@@ -14,8 +14,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/products")
 @CrossOrigin ( {"http://localhost:4401", "http://localhost:4200"} )
-public class ProductController  extends BaseResource<ProductDTO, Product> {
-
+public class ProductResource extends BaseResource<ProductDTO, ProductEntity> {
 
     @GetMapping("")
     public Page<ProductDTO> getAllProducts(Pageable pageable){
@@ -27,7 +26,6 @@ public class ProductController  extends BaseResource<ProductDTO, Product> {
         return getFacade().showDetails(Id);
     }
 
-    //webhook
     @GetMapping("category/{Id}")
     public Page<ProductDTO> findByCategoryId(@PathVariable Long Id, Pageable pageable){
         return getFacade().findByCategoryId(Id,pageable);
@@ -38,7 +36,7 @@ public class ProductController  extends BaseResource<ProductDTO, Product> {
         return getFacade().findByName(name,pageable);
     }
 
-    public ProductController(final ProductFacade facade) {
+    public ProductResource(final ProductFacade facade) {
         super(facade);
     }
 
